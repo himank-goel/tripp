@@ -25,6 +25,9 @@ class App extends Component {
                   guest houses and apartments
                 </span>
               </div>
+              <div>
+                <button type="submit" class="circle" value="" />
+              </div>
             </div>
           </div>
           <div className="image-content">
@@ -76,6 +79,37 @@ class App extends Component {
               font-weight: 200;
               font-size: 25px;
               padding-top: 15px;
+            }
+            .circle {
+              width: 60px;
+              height: 60px;
+              margin-top: 15px;
+              border-radius: 50%;
+              box-shadow: inset 0 0 0 60px #fff;
+              position: relative;
+              border: none;
+              transition: all 0.5s ease-in-out;
+            }
+            .circle:focus {
+              outline: none;
+            }
+            .circle:hover {
+              background: transparent;
+              box-shadow: inset 0 0 0 2px #fff;
+            }
+            .circle:before {
+              content:"\\25BA";
+              display: block;
+              color: #44abff;
+              font-size: 15px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              margin: -9px 0 0 -5px;
+              transition: all 0.5s ease-in-out;
+            }
+            .circle:hover:before {
+              color: #fff;
             }
             .lp-image {
               max-width: 700px;
