@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Sofia;
+  src: url("./static/Font/Sofia\ Pro\ Regular.otf");
+}
+@font-face {
+  font-family: Sofia;
+  font-weight: 700;
+  src: url("./static/Font/Sofia\ Pro\ Bold.otf");
+}
+@font-face {
+  font-family: Sofia;
+  font-weight: 300;
+  src: url("./static/Font/Sofia\ Pro\ Light.otf");
+}
+@font-face {
+  font-family: Sofia;
+  font-weight: 200;
+  src: url("./static/Font/Sofia\ Pro\ Extra\ Light.otf");
+}
 html {
   height: 100%;
 }
