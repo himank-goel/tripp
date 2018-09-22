@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import logo from "./static/logo.svg";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
     return (
       <div>
         <div className="header">
-          <img src={logo} alt="Tripp. Logo" className="logo" />
+          <Link to="/" replace>
+            <img src={logo} alt="Tripp. Logo" className="logo" />
+          </Link>
         </div>
         <style>
           {`      
@@ -24,7 +27,7 @@ class Header extends Component {
                     align-items: flex-start;
                 }
             }
-            `}
+         `}
         </style>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import illustration from "./static/lp-image.svg";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -24,7 +25,9 @@ class App extends Component {
                 </span>
               </div>
               <div>
-                <button type="submit" class="circle" value="" />
+                <Link to="/details" replace>
+                  <button type="submit" className="circle" value="" />
+                </Link>
               </div>
             </div>
           </div>
