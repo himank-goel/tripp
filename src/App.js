@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import logo from "./static/logo.svg";
 import illustration from "./static/lp-image.svg";
+import Header from "./Header";
 
 class App extends Component {
   render() {
     return (
       <div className="outer--main">
-        <div className="header">
-          <img src={logo} alt="Tripp. Logo" className="logo" />
-        </div>
+        <Header />
         <div className="content--outer">
           <div className="text-content">
             <div className="text">
@@ -47,15 +45,6 @@ class App extends Component {
               font-family: Sofia;
               max-height: 100vh;
               overflow: hidden;
-            }
-						.header {
-              flex-direction: column;
-              display: flex;
-              align-items: center;
-              padding: 30px 54px;
-						}
-						.logo {
-							width: 150px;
             }
             .content--outer {
               display: flex;
@@ -128,9 +117,6 @@ class App extends Component {
               }
             }
             @media only screen and (min-width:961px) {
-              .header {
-                align-items: flex-start;
-              }
               .content--outer {
                 flex-direction: row;
                 align-items: flex-start;
