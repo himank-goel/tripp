@@ -14,13 +14,13 @@ class App extends Component {
             <div className="text">
               <div className="big-heading">
                 <span>
-                  Book Your
+                  Book Your 
                   <br /> Stay
                 </span>
               </div>
               <div className="main-text">
                 <span>
-                  At hotels, inns, B&B’s,
+                  At hotels, inns, B&B’s,{" "}
                   <br />
                   guest houses and apartments
                 </span>
@@ -45,10 +45,13 @@ class App extends Component {
             .outer--main {
               color: white;
               font-family: Sofia;
+              max-height: 100vh;
+              overflow: hidden;
             }
 						.header {
               flex-direction: column;
               display: flex;
+              align-items: center;
               padding: 30px 54px;
 						}
 						.logo {
@@ -56,33 +59,35 @@ class App extends Component {
             }
             .content--outer {
               display: flex;
-              align-items: flex-start;
-              flex-direction: row;
+              flex-direction: column;
               justify-content: space-between;
-              padding-top: 2%;
+              padding-top: 5%;
             }
-            .text-content, .image-content {
-              flex: 1;
+            .text-content {
+              display: flex;
+              justify-content: space-around;
             }
             .text {
-              padding-left: 108px;
-              padding-top: 90px;
               display: flex;
               flex-direction: column;
+              align-items: center;
             }
             .big-heading {
               font-weight: 700;
-              font-size: 45px; 
+              font-size: 40px; 
               line-height: 45px;
+            }
+            .text br {
+              display: none;
             }
             .main-text {
               font-weight: 200;
-              font-size: 25px;
+              font-size: 20px;
               padding-top: 15px;
             }
             .circle {
-              width: 60px;
-              height: 60px;
+              width: 50px;
+              height: 50px;
               margin-top: 15px;
               border-radius: 50%;
               box-shadow: inset 0 0 0 60px #fff;
@@ -96,6 +101,7 @@ class App extends Component {
             .circle:hover {
               background: transparent;
               box-shadow: inset 0 0 0 2px #fff;
+              cursor: pointer;
             }
             .circle:before {
               content:"\\25BA";
@@ -112,7 +118,52 @@ class App extends Component {
               color: #fff;
             }
             .lp-image {
+              display: block;
+              margin: 0 auto;
               max-width: 700px;
+            }
+            @media only screen and (min-width:1281px) {
+              .content--outer {
+                padding-top: 2%;
+              }
+            }
+            @media only screen and (min-width:961px) {
+              .header {
+                align-items: flex-start;
+              }
+              .content--outer {
+                flex-direction: row;
+                align-items: flex-start;
+              } 
+              .text-content, .image-content {
+                flex: 1;
+              }
+              .text {
+                padding-left: 108px;
+                padding-top: 90px;
+                align-items: unset;
+              }
+              .text br {
+                display: block;
+              }
+              .text-content {
+                display: block;
+              }
+              .lp-image {
+                margin: unset;
+              }
+            }
+            @media only screen and (min-width:641px) {
+              .big-heading {
+                font-size: 45px;
+              }
+              .main-text {
+                font-size: 25px;
+              }
+              .circle {
+                width: 60px;
+                height: 60px;
+              }
             }
 					`}
         </style>
