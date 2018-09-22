@@ -14,15 +14,15 @@ class App extends Component {
             <div className="text">
               <div className="big-heading">
                 <span>
-                  Book Your 
+                  Book Your
                   <br /> Stay
                 </span>
               </div>
               <div className="main-text">
                 <span>
-                  At hotels, inns, B&B’s,{" "}
+                  At the finest hotel
                   <br />
-                  guest houses and apartments
+                  and enjoy its finest service
                 </span>
               </div>
               <div>
