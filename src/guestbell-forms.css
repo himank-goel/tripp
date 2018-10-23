@@ -269,7 +269,6 @@
 .input__base {
   position: relative;
   margin: 1rem 0 1.25rem 0;
-  margin-right: 0.8rem;
   border-bottom: 1px solid #eeeeee;
   width: 100%;
   /* VALIDATION ======================================= */
@@ -301,9 +300,6 @@
 }
 .input__base .validation__ul .validation__item {
   margin-left: 10px;
-}
-.input__base.validation__error {
-  border-bottom: 1px solid #ff0000 !important;
 }
 .input__base.validation__error .validation__ul {
   margin-top: 0;
@@ -932,7 +928,10 @@ a.guestbell__dropdown-toggle {
   border-bottom: 1px solid transparent;
 }
 .select-input .select-input__select__wrapper .select-input__select {
-  color: #555555;
+  padding: 6px 10px 5px 5px;
+  font-family: Sofia;
+  font-size: 14pt;
+  color: #fff;
   display: inline-block;
   outline: 0;
   border: none;
