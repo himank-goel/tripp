@@ -76,9 +76,11 @@ class Details extends Component {
       this.state.adults === 0
     ) {
       alert("One or more required fields are empty");
+      return;
     }
     else if ((this.state.adults + this.state.children) > 120) {
       alert("Total booking capacity exceeded");
+      return;
     }
   }
 
@@ -177,14 +179,13 @@ class Details extends Component {
                       />
                     </div>
                     <div className="btn-postn">
-                      {/* <Link to="/details" replace> */}
+                      <Link to="https://facebook.com/" onClick={this.validate} replace>
                       <button
                         type="submit"
                         className="circle"
                         value=""
-                        onClick={this.validate}
                       />
-                      {/* </Link> */}
+                      </Link>
                     </div>
                   </div>
                 </div>
