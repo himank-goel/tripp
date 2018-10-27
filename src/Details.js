@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Inputs from "./Inputs";
+import OptionLayout from "./OptionLayout";
 
 class Details extends Component {
   constructor(props) {
@@ -12,7 +13,12 @@ class Details extends Component {
       roomType: "",
       adults: 0,
       children: 0,
-      dataReceived: false
+      dataReceived: true,
+      roomList: [
+        { id: 101, location: "New Delhi", address: "Aerocity", type: "Standard", price: 8150, capacity: 3, numberOfRooms: 3 },
+        { id: 111, location: "New Delhi", address: "Greater Kailash", type: "Standard", price: 7450, capacity: 2, numberOfRooms: 4 },
+        { id: 121, location: "New Delhi", address: "Noida", type: "Standard", price: 9250, capacity: 5, numberOfRooms: 2 }
+      ]
     };
     this.setFields = this.setFields.bind(this);
   }
@@ -36,7 +42,7 @@ class Details extends Component {
         {!this.state.dataReceived ? (
           <Inputs setFields={this.setFields} />
         ) : (
-          <div>helo</div>
+          <OptionLayout roomList={this.state.roomList} />
         )}
         <style>
           {`
