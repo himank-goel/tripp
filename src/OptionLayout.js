@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import PaymentPage from "./PaymentPage";
 
-function RoomCard({ room, open, toggleDetailsDisplay }) {
+function RoomCard({ room, open, toggleDetailsDisplay, bookRoom }) {
   return (
     <div className="max--outer">
       <div
@@ -33,29 +34,38 @@ function RoomCard({ room, open, toggleDetailsDisplay }) {
               </div>
             </div>
             <div className="right-details">
-              <button type="submit" className="circle" value="" />
+              <button
+                type="submit"
+                className="circle"
+                value=""
+                onClick={() => {
+                  bookRoom(room.id, room.price, room.numberOfRooms);
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
-      {room.id === open ? (
-        <div className="further-details--outer">
-          <div className="further-details--inner">
-            <div className="further-left">
-              <div>Room:</div>
-              <div>No of Rooms:</div>
-              <div>Capacity/Room:</div>
-            </div>
-            <div className="further-right">
-              <div>Deluxe</div>
-              <div>3</div>
-              <div>3</div>
-            </div>
+      <div
+        className={
+          room.id === open
+            ? "further-details--outer"
+            : "further-details--outer closed-further"
+        }
+      >
+        <div className="further-details--inner">
+          <div className="further-left">
+            <div>Room:</div>
+            <div>No of Rooms:</div>
+            <div>Capacity/Room:</div>
+          </div>
+          <div className="further-right">
+            <div>{room.type}</div>
+            <div>{room.numberOfRooms}</div>
+            <div>{room.capacity}</div>
           </div>
         </div>
-      ) : (
-        <div />
-      )}
+      </div>
     </div>
   );
 }
@@ -65,9 +75,16 @@ class OptionLayout extends Component {
     super(props);
     this.state = {
       roomList: this.props.roomList,
-      openRoomDetails: 0
+      checkIn: this.props.checkIn,
+      checkOut: this.props.checkOut,
+      id: null,
+      price: null,
+      noOfRooms: null,
+      openRoomDetails: 0,
+      paymentPage: false
     };
     this.toggleDetailsDisplay = this.toggleDetailsDisplay.bind(this);
+    this.bookRoom = this.bookRoom.bind(this);
   }
 
   toggleDetailsDisplay(roomId) {
@@ -82,6 +99,15 @@ class OptionLayout extends Component {
     }
   }
 
+  bookRoom(id, price, noOfRooms) {
+    this.setState({
+      paymentPage: true,
+      id,
+      price,
+      noOfRooms
+    });
+  }
+
   render() {
     const RoomCards = this.state.roomList.map(room => {
       return (
@@ -89,6 +115,7 @@ class OptionLayout extends Component {
           room={room}
           open={this.state.openRoomDetails}
           toggleDetailsDisplay={this.toggleDetailsDisplay}
+          bookRoom={this.bookRoom}
         />
       );
     });
@@ -96,12 +123,22 @@ class OptionLayout extends Component {
       <div>
         <div className="inner--main">
           <div className="container--outer">
-            <div className="content">
-              <div className="heading">
-                <span>You can choose from the following</span>
+            {!this.state.paymentPage ? (
+              <div className="content">
+                <div className="heading">
+                  <span>You can choose from the following</span>
+                </div>
+                <div className="cards--container">{RoomCards}</div>
               </div>
-              <div className="cards--container">{RoomCards}</div>
-            </div>
+            ) : (
+              <PaymentPage 
+                checkIn = {this.state.checkIn}
+                checkOut = {this.state.checkOut}
+                id = {this.state.id}
+                noOfRooms = {this.state.noOfRooms}
+                price = {this.state.price}
+              />
+            )}
           </div>
         </div>
         <style jsx>
@@ -221,6 +258,13 @@ class OptionLayout extends Component {
               background: rgba(255, 255, 255, 0.3);
               border-radius: 0 0 15px 15px;
               padding: 15px 20px;
+              transition: opacity 0.5s ease-in, height 0.3s ease-in;
+              opacity: 1;
+            }
+            .closed-further {
+              height: 0;
+              opacity: 0;
+              transition: opacity 0.3s ease-in, height 0.5s ease-in;
             }
             .further-details--inner {
               display: flex;

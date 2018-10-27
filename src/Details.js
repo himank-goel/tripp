@@ -42,7 +42,7 @@ class Details extends Component {
         {!this.state.dataReceived ? (
           <Inputs setFields={this.setFields} />
         ) : (
-          <OptionLayout roomList={this.state.roomList} />
+          <OptionLayout roomList={this.state.roomList} checkIn={this.state.checkIn} checkOut={this.state.checkOut} />
         )}
         <style>
           {`
