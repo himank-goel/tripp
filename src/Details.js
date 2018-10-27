@@ -13,17 +13,23 @@ class Details extends Component {
       roomType: "",
       adults: 0,
       children: 0,
-      dataReceived: true,
-      roomList: [
-        { id: 101, location: "New Delhi", address: "Aerocity", type: "Standard", price: 8150, capacity: 3, numberOfRooms: 3 },
-        { id: 111, location: "New Delhi", address: "Greater Kailash", type: "Standard", price: 7450, capacity: 2, numberOfRooms: 4 },
-        { id: 121, location: "New Delhi", address: "Noida", type: "Standard", price: 9250, capacity: 5, numberOfRooms: 2 }
-      ]
+      dataReceived: false,
+      roomList: []
     };
     this.setFields = this.setFields.bind(this);
+    this.dataNotRecieved = this.dataNotRecieved.bind(this);
   }
 
-  setFields(destination, checkIn, checkOut, roomType, adults, children) {
+  async setFields(destination, checkIn, checkOut, roomType, adults, children) {
+    let response = await fetch(`http://1ab83ab7.ngrok.io/get-rooms?location=${destination}&type=${roomType}&adults=${adults}&children=${children}&checkInTime=${checkIn}&checkOutTime=${checkOut}`);
+    if(response.status === 400) {
+      alert("Check your input fields");
+      return;
+    } 
+    let roomList = await response.json();
+    
+    console.log(roomList);
+
     this.setState({
       destination,
       checkIn,
@@ -31,7 +37,14 @@ class Details extends Component {
       roomType,
       adults,
       children,
+      roomList,
       dataReceived: true
+    });
+  }
+
+  dataNotRecieved(){
+    this.setState({
+      dataReceived: false
     });
   }
 
@@ -42,7 +55,12 @@ class Details extends Component {
         {!this.state.dataReceived ? (
           <Inputs setFields={this.setFields} />
         ) : (
-          <OptionLayout roomList={this.state.roomList} checkIn={this.state.checkIn} checkOut={this.state.checkOut} />
+          <OptionLayout
+            roomList={this.state.roomList}
+            checkIn={this.state.checkIn}
+            checkOut={this.state.checkOut}
+            dataNotRecieved={this.dataNotRecieved}
+          />
         )}
         <style>
           {`

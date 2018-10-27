@@ -71,8 +71,7 @@ class Inputs extends Component {
       this.state.roomType === "" ||
       this.state.checkIn === "" ||
       this.state.checkOut === "" ||
-      this.state.children === 0 ||
-      this.state.adults === 0
+      this.state.adults === ""
     ) {
       alert("One or more required fields are empty");
       flag = 0;
@@ -113,10 +112,10 @@ class Inputs extends Component {
                         required={true}
                         label={"Destination"}
                         values={[
-                          { value: "delhi", label: "New Delhi" },
-                          { value: "mumbai", label: "Mumbai" },
-                          { value: "hydrabad", label: "Hydrabad" },
-                          { value: "kolkata", label: "Kolkata" }
+                          { value: "Delhi", label: "Delhi" },
+                          { value: "Mumbai", label: "Mumbai" },
+                          { value: "Hydrabad", label: "Hydrabad" },
+                          { value: "Kolkata", label: "Kolkata" }
                         ]}
                         onChange={this.handleDestination}
                       />
@@ -155,9 +154,9 @@ class Inputs extends Component {
                         required={true}
                         label={"Room Type"}
                         values={[
-                          { value: "S", label: "Standard" },
-                          { value: "D", label: "Deluxe" },
-                          { value: "SD", label: "Super Deluxe" }
+                          { value: "Standard", label: "Standard" },
+                          { value: "Deluxe", label: "Deluxe" },
+                          { value: "Super-Deluxe", label: "Super Deluxe" }
                         ]}
                         onChange={this.handleRoomType}
                       />
@@ -176,7 +175,6 @@ class Inputs extends Component {
                         type={"number"}
                       />
                       <Text
-                        required={true}
                         label="Children"
                         className={
                           this.state.children === ""

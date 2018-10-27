@@ -123,21 +123,47 @@ class OptionLayout extends Component {
       <div>
         <div className="inner--main">
           <div className="container--outer">
-            {!this.state.paymentPage ? (
+            {this.state.roomList.length !== 0 ? (
+              !this.state.paymentPage ? (
+                <div className="content">
+                  <div className="heading">
+                    <span>You can choose from the following</span>
+                  </div>
+                  <div className="cards--container">{RoomCards}</div>
+                </div>
+              ) : (
+                <div className="content">
+                  <div className="heading">
+                    <span>Enter Payment Details</span>
+                  </div>
+                  <PaymentPage
+                    checkIn={this.state.checkIn}
+                    checkOut={this.state.checkOut}
+                    id={this.state.id}
+                    noOfRooms={this.state.noOfRooms}
+                    price={this.state.price}
+                  />
+                </div>
+              )
+            ) : (
               <div className="content">
                 <div className="heading">
-                  <span>You can choose from the following</span>
+                  <span>We found no available rooms</span>
                 </div>
-                <div className="cards--container">{RoomCards}</div>
+                <div className="sub-heading">
+                  <span>
+                    You can alter you search queries by clicking below
+                  </span>
+                </div>
+                <div className="btn-postn">
+                  <button
+                    type="submit"
+                    className="circle circle--new"
+                    onClick={this.props.dataNotRecieved}
+                    value=""
+                  />
+                </div>
               </div>
-            ) : (
-              <PaymentPage 
-                checkIn = {this.state.checkIn}
-                checkOut = {this.state.checkOut}
-                id = {this.state.id}
-                noOfRooms = {this.state.noOfRooms}
-                price = {this.state.price}
-              />
             )}
           </div>
         </div>
@@ -159,6 +185,11 @@ class OptionLayout extends Component {
             .heading {
               font-weight: 700;
               font-size: 30px;
+            }
+            .sub-heading {
+              font-weight: 500;
+              font-size: 20px;
+              margin-top: 20px;
             }
             .cards--container {
               display: flex;
@@ -246,6 +277,13 @@ class OptionLayout extends Component {
               left: 29%;
               margin: -9px 0 0 -5px;
               transition: all 0.5s ease-in-out;
+            }
+            .circle--new:before {
+              content: "Alter";
+              font-size: 18px;
+              font-weight: 500;
+              top: 39%;
+              left: 38%;
             }
             .circle:hover:before {
               color: #fff;
