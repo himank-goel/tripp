@@ -87,7 +87,7 @@ class PaymentPage extends Component {
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     });
-    if(response.status === 400) {
+    if (response.status === 400) {
       alert("Some error happened");
       return;
     }
